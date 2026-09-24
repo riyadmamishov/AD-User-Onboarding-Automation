@@ -13,7 +13,7 @@ This lab automates bulk creation of 10 Active Directory users using PowerShell. 
 With PowerShell:
 - 10 users created with 1 command
 - All users placed in `OU=Users,DC=company,DC=local`
-- Default password: `Crucel123!` + force change at next logon
+- Default password: `Test1234` + force change at next logon
 - Green confirmation output in console
 
 ### 🛠️ Tech Stack
@@ -24,7 +24,7 @@ With PowerShell:
 ### 📸 Lab Results
 
 **1. PowerShell Execution:**
-![PowerShell Execution](./01-powershell.png)
+![PowerShell Execution](./01-powershell2.png)
 
 **2. Verification in ADUC:**
 ![ADUC Verification](./02-aduc.png)
