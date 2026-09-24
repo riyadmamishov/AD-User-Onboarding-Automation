@@ -15,6 +15,8 @@ With PowerShell:
 - All users placed in `OU=Users,DC=company,DC=local`
 - Default password: `P@ssw0rd2024!` + force change at next logon
 - Green confirmation output in console
+
+   **NOTE:"We need to save the given Excel file as a CSV."...**
 - <img width="1600" height="1066" alt="NewUsers" src="https://github.com/user-attachments/assets/9b43cc15-0f1f-4ef3-b2b8-4ae504b01cd9" />
 
 
@@ -22,10 +24,17 @@ With PowerShell:
 - Windows Server 2022
 - Active Directory PowerShell Module
 - `New-ADUser`, `ConvertTo-SecureString`, `Import-Csv`
+- Powershell code
+-  ```powershell
+    $users = Import-Csv .\NewUsers.csv$Password = ConvertTo-SecureString "P@ssw0rd2024!" -AsPlainText -Forceforeach ($u in $users) {
+    New-ADUser -Name $u.Name -SamAccountName $u.SamAccountName -UserPrincipalName $u.UPN -Path $u.OU -Department $u.Department -AccountPassword $Password -Enabled $true -ChangePasswordAtLogon $true
+    Write-Host "$($u.SamAccountName) created" -ForegroundColor Green
+Write-Host "Processed 10 user accounts. All users created successfully In OU=Users,OU=Employees,DC=contoso,DC=com"
 
 ### 📸 Lab Results
 
 **1. PowerShell Execution:**
+
 ![PowerShell Execution](./01-powershell2.png)
 
 **2. Verification in ADUC:**
